@@ -23,8 +23,7 @@ export default async function handler(req, res) {
         axios.request(options).then(function (response) {
             res.status(200).json(response.data.data);
         }).catch(function (error) {
-            console.log(error.message)
-            res.status(200).json(error.message);
+            res.status(500).json(error.response.data.message);
         });
 
     } else {

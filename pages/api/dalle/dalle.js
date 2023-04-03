@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             res.status(200).json(response.data.data)
 
         } catch (error) {
-            res.status(200).json(error.message)
+            res.status(500).json(error.response.data.error?.code)
             
         }
     }

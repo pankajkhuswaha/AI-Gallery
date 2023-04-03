@@ -21,7 +21,7 @@ const CreatePost = () => {
         if (prompt) {
             try {
                 setGeneratingImg(true);
-                const response = await fetch('https://aigallery-pk.netlify.app/api/dalle', {
+                const response = await fetch('https://aigallery-pk.netlify.app/api/dalle/image', {
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -31,16 +31,21 @@ const CreatePost = () => {
                     }),
                 });
                 const data = await response.json();
-                console.log(data)
-                if (data.length) {
-                    const images = data.map(ele => ele.url);
-                    setForm({ ...form, photo: images });
+                // console.log(data)
+                if (response.ok) {
+                    // TODO openai response code
+                    // const images = data.map(ele => ele.url);
+                    // setForm({ ...form, photo: images });
+                    
+                    let img = data.map(ele=>ele.url);
+                    let imgurl = img.slice(0,4)
+                    setForm({ ...form, photo: imgurl });
+                   
                 } else {
-                    toast.error(data.message)
+                    toast.error(data)
                 }             
                 
             } catch (err) {
-                console.log(prompt)
                 toast.error(err.message);
             } finally {
                 setGeneratingImg(false);
@@ -58,7 +63,7 @@ const CreatePost = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-        if(url.includes("oaidalleapiprodscus")){
+        if(url.includes("http")){
         try {
             const response = await fetch('https://aigallery-pk.netlify.app/api/dalle/cloud', {
                 method: 'POST',
@@ -104,7 +109,7 @@ const CreatePost = () => {
         <>
             <Toaster position="top-right"
                 reverseOrder={false} />
-            <section className="h-[90vh] sm:mx-[10vw] mx-4 my-4 sm:my-10 flex flex-col items-center">
+            <section className="h-[90vh] sm:mx-[10vw] mx-4  my-20 flex flex-col items-center">
                 <div className="sm:w-[35vw] w-full h-fit border-2 p-2 py-4 sm:p-10 rounded-md shadow-lg shadow-gray-600 flex flex-col justify-center items-center">
                     <div className='flex flex-col w-full mb-10 '>
                         <h1 className="font-bold text-[#ffffff] text-3xl">Create</h1>

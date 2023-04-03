@@ -3,7 +3,7 @@ import Social from './Social'
 
 const Footer = () => {
   return (
-    <><Social/></>
+    <div className=' absolute bottom-0 flex justify-center items-center'><Social/></div>
   )
 }
 
