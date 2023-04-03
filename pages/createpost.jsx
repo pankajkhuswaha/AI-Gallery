@@ -22,25 +22,25 @@ const CreatePost = () => {
             try {
                 setGeneratingImg(true);
                 const response = await fetch('https://aigallery-pk.netlify.app/api/dalle', {
-                    method: 'POST',
+                    method:'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        prompt,
+                        prompt
                     }),
                 });
-
                 const data = await response.json();
+                console.log(data)
                 if (data.length) {
                     const images = data.map(ele => ele.url);
                     setForm({ ...form, photo: images });
                 } else {
                     toast.error(data.message)
-                }
-
-
+                }             
+                
             } catch (err) {
+                console.log(prompt)
                 toast.error(err.message);
             } finally {
                 setGeneratingImg(false);
@@ -54,7 +54,6 @@ const CreatePost = () => {
         $(e.target).parent().addClass("border-red-500");
         $(e.target).parent().siblings().removeClass("border-red-500");
     }
-    console.log(url)
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,7 +70,6 @@ const CreatePost = () => {
                 }),
             });
             let urlimage = await response.json();
-            console.log(urlimage)
             setUrl(urlimage);
             let data = {
                 postedBy: "Pankaj",
