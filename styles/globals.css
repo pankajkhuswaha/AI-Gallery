@@ -1,3 +1,191 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* body{
+  background: url("../public/pat.png");
+} */
+/* <------- Inputs --------> */
+.inputGroup {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1em 0 1em 0;
+  position: relative;
+}
+
+.inputGroup input {
+  font-size: 100%;
+  padding: 8px;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.inputGroup :is(input:focus,input:valid) {
+  border-color: rgb(150, 150, 200);
+}
+.card:hover{
+  transform: scale(1.05);
+}
+.social-links,.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-btn {
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  font-family: 'Titillium Web', sans-serif;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  background: white;
+  margin: 5px;
+  transition: 0.3s;
+  justify-content: center;
+}
+
+.social-btn svg {
+  height: 24px;
+  width: 24px;
+}
+
+.social-btn span {
+  width: 0px;
+  overflow: hidden;
+  transition: 0.3s;
+  text-align: center;
+  margin-left: 5px;
+}
+
+.social-btn:hover {
+  width: 150px;
+  border-radius: 5px;
+}
+
+.social-btn:hover span {
+  padding: 2px;
+  width: 80px;
+}
+
+#twitter svg {
+  fill: #1da1f2;
+}
+
+#linkedin svg {
+  fill: #0e76a8;
+}
+
+#github {
+  fill: #333;
+}
+
+/* <------- Create Button --------> */
+.main {
+  align-items: center;
+  justify-content: center;
+  transform: translate(0%,25%);
+}
+.btnmain {
+  width: 11em;
+  height: 3.5em;
+  border: none;
+  display: flex;
+  align-items: center;
+  background-color: #171717;
+  border-radius: 15px;
+  padding-left: 1.15em;
+  z-index: 3;
+  overflow: hidden;
+  transition: .4s ease-in-out;
+}
+
+.text {
+  color: white;
+  padding-left: 0.5em;
+  padding-top: 0.1em;
+  letter-spacing: 0.8em;
+  transition: .4s ease-in-out;
+  z-index: 3;
+  font-weight: bold;
+}
+
+.planet {
+  position: relative;
+  margin-left: -9.55em;
+  left: 2.6em;
+  scale: 4;
+  transition: .4s ease-in-out;
+}
+
+.img {
+  margin-left: -7.25em;
+  margin-top: 6.3em;
+  transition: .4s ease-in-out;
+  z-index: -2;
+}
+
+.img .stars {
+  margin-right: -0.8em;
+  margin-top: 7em;
+  scale: 0.85;
+  opacity: 0;
+  transition: .4s ease-in-out;
+}
+
+.img .astronaut {
+  position: relative;
+  top: -6.2em;
+  left: .65em;
+}
+
+.satalite {
+  position: relative;
+  left: -1em;
+  top: -3em;
+  animation: 4s around infinite;
+  transition: .4s ease-in-out;
+}
+
+@keyframes around {
+  0% {
+    z-index: 5;
+    transform: translateY(-3.5em) translateX(8.5em);
+  }
+
+  50% {
+    transform: translateX(1em) translateY(3.5em);
+  }
+
+  100% {
+    transform: translateY(-3.5em) translateX(8.5em);
+    z-index: -2;
+  }
+}
+
+.btnmain:hover .img {
+  margin-top: -1em;
+  z-index: 4;
+}
+
+.btnmain:hover .text {
+  opacity: 0;
+}
+
+.btnmain:hover .planet {
+  opacity: 0;
+}
+
+.btnmain:hover + .satalite {
+  opacity: 0;
+}
+
+.btnmain:active {
+  transform: scale(0.9);
+}
+
+.btnmain:active .stars {
+  opacity: 1;
+}
