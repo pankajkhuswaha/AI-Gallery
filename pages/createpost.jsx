@@ -119,7 +119,7 @@ const CreatePost = () => {
 
                         <div className='w-full flex flex-wrap max-sm:justify-center gap-4' >
                             {form.photo.map((ele, i) => {
-                                return (<div key={i} onClick={(e) => selectimg(e, ele)} className="relative cursor-pointer bg-transparent  border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-40 h-40 sm:w-64 sm:h-64 flex justify-center items-center">
+                                return (<div key={i} onClick={(e) => selectimg(e, ele)} className="relative cursor-pointer bg-transparent  border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-28  h-28 sm:w-64 sm:h-64 flex justify-center items-center">
                                     <img
                                         src={ele}
                                         alt={form.prompt}

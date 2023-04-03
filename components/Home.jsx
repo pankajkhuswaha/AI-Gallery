@@ -65,7 +65,7 @@ const Home = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto">
+    <section className="max-w-7xl mx-auto my-20">
       <Toaster position="top-right"
         reverseOrder={false} />
       <div>
@@ -86,7 +86,7 @@ const Home = () => {
           <>
             {searchText && (
               <h2 className="font-medium text-[#666e75] text-xl mb-3">
-                Showing Resuls for <span className="text-[#222328]">{searchText}</span>:
+                Showing Resuls for <span className="text-[#e10c0c]">{searchText}</span>:
               </h2>
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
