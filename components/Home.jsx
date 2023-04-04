@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { Card, Loader } from './index';
 import { Toaster, toast } from 'react-hot-toast';
+import MasonaryLayout from './MasonaryL';
 
 const RenderCards = ({ data, title }) => {
   if (data?.length > 0) {
@@ -90,16 +91,18 @@ const Home = () => {
               </h2>
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
-              {searchText ? (
+              {searchText ? (<>
+                {/* <MasonaryLayout posts={allPosts}/> */}
                 <RenderCards
                   data={searchedResults}
                   title="No Search Results Found"
-                />
-              ) : (
+                /></>
+              ) : (<>
+                {/* <MasonaryLayout posts={allPosts}/> */}
                 <RenderCards
                   data={allPosts}
                   title="No Posts Yet"
-                />
+                /></>
               )}
             </div>
           </>

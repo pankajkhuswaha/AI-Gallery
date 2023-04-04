@@ -76,6 +76,7 @@ const CreatePost = () => {
             });
             let urlimage = await response.json();
             setUrl(urlimage);
+            console.log(urlimage)
             let data = {
                 postedBy: "Pankaj",
                 prompt,
@@ -92,10 +93,12 @@ const CreatePost = () => {
                   });
                   setLoading(false)
               } catch (err) {
+
                   toast.error(err.message)
               }
 
         } catch (error) {
+            // console.log(error)
             toast.error(error.message)
         }
     }
