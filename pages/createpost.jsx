@@ -21,7 +21,7 @@ const CreatePost = () => {
         if (prompt) {
             try {
                 setGeneratingImg(true);
-                const response = await fetch('https://aigallery-pk.netlify.app/api/dalle/image', {
+                const response = await fetch('https://aigallery-pk.netlify.app/api/dalle', {
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -34,12 +34,12 @@ const CreatePost = () => {
                 // console.log(data)
                 if (response.ok) {
                     // TODO openai response code
-                    // const images = data.map(ele => ele.url);
-                    // setForm({ ...form, photo: images });
-                    
-                    let img = data.map(ele=>ele.url);
-                    let imgurl = img.slice(0,4)
-                    setForm({ ...form, photo: imgurl });
+                    const images = data.map(ele => ele.url);
+                    setForm({ ...form, photo: images });
+                    // TODO to get search result and response
+                    // let img = data.map(ele=>ele.url);
+                    // let imgurl = img.slice(0,4)
+                    // setForm({ ...form, photo: imgurl });
                    
                 } else {
                     toast.error(data)

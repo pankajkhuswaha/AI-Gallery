@@ -14,7 +14,7 @@ export default async function handler(req, res) {
             url: 'https://openai80.p.rapidapi.com/images/generations',
             headers: {
                 'content-type': 'application/json',
-                'X-RapidAPI-Key': '48b0c780f6msha58c62cd28c996ap126f2ajsndad660f4f935',
+                'X-RapidAPI-Key': '764f38a5a2mshfa0ae8eeb2d21c7p14d197jsnf53744f7d0c4',
                 'X-RapidAPI-Host': 'openai80.p.rapidapi.com'
             },
             data: JSON.stringify(datas)
