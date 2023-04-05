@@ -21,7 +21,7 @@ const CreatePost = () => {
         if (prompt) {
             try {
                 setGeneratingImg(true);
-                const response = await fetch('https://aigallery-pk.netlify.app/api/dalle', {
+                const response = await fetch('https://aigallery-pk.netlify.app/api/dalle/bing', {
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -34,8 +34,15 @@ const CreatePost = () => {
                 // console.log(data)
                 if (response.ok) {
                     // TODO openai response code
-                    const images = data.map(ele => ele.url);
-                    setForm({ ...form, photo: images });
+                    // const images = data.map(ele => ele.url);
+                    // setForm({ ...form, photo: images });
+
+                    // TO Bing search
+                    console.log(data)
+                    let img = data.map(ele=>ele.contentUrl);
+                    let imgurl = img.slice(0,4)
+                    setForm({ ...form, photo: imgurl });
+
                     // TODO to get search result and response
                     // let img = data.map(ele=>ele.url);
                     // let imgurl = img.slice(0,4)
@@ -65,18 +72,19 @@ const CreatePost = () => {
         setLoading(true)
         if(url.includes("http")){
         try {
+            const urldata = JSON.stringify({
+                prompt,
+                url
+            })
             const response = await fetch('https://aigallery-pk.netlify.app/api/dalle/cloud', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    prompt, url
-                }),
+                body:urldata,
             });
             let urlimage = await response.json();
             setUrl(urlimage);
-            console.log(urlimage)
             let data = {
                 postedBy: "Pankaj",
                 prompt,
@@ -92,12 +100,15 @@ const CreatePost = () => {
                       body:JSON.stringify(data),
                   });
                   setLoading(false)
+                  toast.success("Post is added sucessfully")
+                  setTimeout(() => {
+                    router.push("/")
+                  }, 1000);
               } catch (err) {
-
                   toast.error(err.message)
-              }
-
-        } catch (error) {
+                }
+                
+            } catch (error) {
             // console.log(error)
             toast.error(error.message)
         }
@@ -113,14 +124,14 @@ const CreatePost = () => {
             <Toaster position="top-right"
                 reverseOrder={false} />
             <section className="h-[90vh] sm:mx-[10vw] mx-4  my-20 flex flex-col items-center">
-                <div className="sm:w-[35vw] w-full h-fit border-2 p-2 py-4 sm:p-10 rounded-md shadow-lg shadow-gray-600 flex flex-col justify-center items-center">
+                <div className="sm:w-[40vw] w-full h-fit border-2 p-2 py-4 sm:p-10 rounded-md shadow-lg shadow-gray-600 flex flex-col justify-center items-center">
                     <div className='flex flex-col w-full mb-10 '>
                         <h1 className="font-bold text-[#ffffff] text-3xl">Create</h1>
                         <p className="mt-2 text-para text-[14px] max-w-[500px]">Generate an imaginative image through DALL-E AI and share it with the community</p>
                     </div>
                     <form onSubmit={handleSubmit} className='w-4/5 sm:w-full '>
 
-                        <div className='w-full flex flex-wrap max-sm:justify-center gap-4' >
+                        <div className='w-full flex flex-wrap items-center justify-center gap-4' >
                             {form.photo.map((ele, i) => {
                                 return (<div key={i} onClick={(e) => selectimg(e, ele)} className="relative cursor-pointer bg-transparent  border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-28  h-28 sm:w-64 sm:h-64 flex justify-center items-center">
                                     <img
@@ -131,7 +142,7 @@ const CreatePost = () => {
                                 </div>)
                             })}
                             {(generatingImg || loading)&& (
-                                <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
+                                <div className="absolute inset-0 z-50 flex justify-center h-[150vh] items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
                                     <Loader />
                                 </div>
                             )}

@@ -2,10 +2,13 @@ import React from 'react'
 import Card from './Card';
 
 const RenderdCard = ({ data, title }) => {
-  console.log(data)
     if (data?.length > 0) {
       return (
-        data.map((post) => <Card key={post._id} {...post} />)
+        <>
+
+            {data.map((post) => <Card className="in inline-block" key={post._id} {...post} />)}
+ 
+        </>
       );
     }
   

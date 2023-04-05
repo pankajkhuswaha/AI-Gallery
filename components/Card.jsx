@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = ({ _id, postedBy,userimage, prompt, imageurl }) => (
   <>
-    <div className=' flex justify-center items-center w-full'>
+    <div className='w-full h-fit flex items-center justify-center m-2'>
     <div className="rounded-md group relative shadow-card cursor-zoom-in transition-all delay-75  hover:shadow-cardhover card w-[90%] mb-2 ">
     <img
       className="h-auto object-cover rounded-md"

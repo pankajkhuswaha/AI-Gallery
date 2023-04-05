@@ -1,4 +1,4 @@
-import Home from '@/components/Home'
+import Home from '@/components/home'
 import Link from 'next/link'
 import React from 'react'
 
