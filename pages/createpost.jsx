@@ -132,6 +132,7 @@ const CreatePost = () => {
                     <form onSubmit={handleSubmit} className='w-4/5 sm:w-full '>
 
                         <div className='w-full flex flex-wrap items-center justify-center gap-4' >
+                            {console.log(form.photo)}
                             {form.photo.map((ele, i) => {
                                 return (<div key={i} onClick={(e) => selectimg(e, ele)} className="relative cursor-pointer bg-transparent  border-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-28  h-28 sm:w-64 sm:h-64 flex justify-center items-center">
                                     <img
