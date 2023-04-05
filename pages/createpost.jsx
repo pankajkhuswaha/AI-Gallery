@@ -124,7 +124,7 @@ const CreatePost = () => {
             <Toaster position="top-right"
                 reverseOrder={false} />
             <section className="h-[90vh] sm:mx-[10vw] mx-4  my-20 flex flex-col items-center">
-                <div className="sm:w-[40vw] w-full h-fit border-2 p-2 py-4 sm:p-10 rounded-md shadow-lg shadow-gray-600 flex flex-col justify-center items-center">
+                <div className="sm:w-[50vw] w-full h-fit border-2 p-2 py-4 sm:p-10 rounded-md shadow-lg shadow-gray-600 flex flex-col justify-center items-center">
                     <div className='flex flex-col w-full mb-10 '>
                         <h1 className="font-bold text-[#ffffff] text-3xl">Create</h1>
                         <p className="mt-2 text-para text-[14px] max-w-[500px]">Generate an imaginative image through DALL-E AI and share it with the community</p>
